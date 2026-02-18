@@ -1,180 +1,179 @@
-Mapty — Workout Tracking Application
+# Mapty — Workout Tracking Application
 
-A sophisticated workout tracking application built with modern JavaScript, demonstrating advanced Object-Oriented Programming (OOP), clean architecture principles, and seamless integration with browser APIs.
+A workout tracking application built with modern JavaScript that allows users to log running and cycling workouts directly on an interactive map.
 
-This project reflects strong frontend engineering fundamentals, scalable architecture design, and production-quality application logic.
+This project demonstrates clean architecture, advanced Object-Oriented Programming (OOP), and integration with browser APIs — without using any frontend frameworks.
 
-Overview
+---
 
-Mapty allows users to log running and cycling workouts directly on an interactive map. The application manages state efficiently, persists data across sessions, and provides smooth UI interactions without relying on external frameworks.
+## Overview
 
-Key Features
+Mapty enables users to:
 
-Interactive map tracking — Click anywhere on the map to log a workout
+- Click on a map to log workouts
+- Store workouts persistently in the browser
+- Navigate from the workout list to its map location
+- Manage workout entries dynamically
 
-Dynamic form behavior — Automatically switches between Cadence (Running) and Elevation (Cycling)
+The application follows a structured, class-based architecture with clear separation of concerns.
 
-Persistent data storage — Workouts saved using Local Storage
+---
 
-List-to-map navigation — Clicking a workout pans the map smoothly to its location
+## Features
 
-Workout deletion — Remove specific workouts
+### Interactive Map Tracking
+Click anywhere on the map to add a workout at a specific location.
 
-Sorting functionality — Sort workouts by distance
+### Dynamic Form Behavior
+The form automatically toggles between:
 
-Architecture & Technical Implementation
-Advanced Object-Oriented Programming
-Class Hierarchy
+- **Cadence** (Running)
+- **Elevation Gain** (Cycling)
 
-The project uses a structured class-based design:
+### Workout Persistence
+Workouts are saved using the `Local Storage API` and restored when the page reloads.
 
+### List-to-Map Navigation
+Clicking a workout in the sidebar smoothly pans the map to its exact coordinates.
+
+### Workout Management
+- Delete specific workouts
+- Sort workouts by distance
+
+---
+
+## Architecture
+
+The application is built using a class-based design:
+
+```
 Workout (Base Class)
+│
+├── Running (Subclass)
+└── Cycling (Subclass)
 
-Running (Subclass)
+App (Controller Class)
+```
 
-Cycling (Subclass)
+### Workout (Base Class)
 
-Inheritance & Method Overriding
+Contains shared properties:
 
-Running calculates pace
+- `date`
+- `id`
+- `coords`
+- `distance`
+- `duration`
 
-Cycling calculates speed
+### Running & Cycling (Subclasses)
 
-Subclasses override specific methods to handle discipline-specific logic
+- Running calculates **pace**
+- Cycling calculates **speed**
+- Method overriding is used for workout-specific logic
 
-Encapsulation
+### App (Controller Class)
 
-Modern ES6 private class fields are used to protect internal state:
+Responsible for:
 
+- Initializing the map
+- Handling user interactions
+- Rendering workouts
+- Managing application state
+- Persisting data to local storage
+
+---
+
+## Technical Concepts Applied
+
+### Object-Oriented Programming (OOP)
+
+- ES6 Classes
+- Inheritance
+- Method Overriding
+- Encapsulation using private class fields:
+
+```js
 #map
 #workouts
+```
 
+### State Management
 
-Private methods ensure internal logic remains controlled and inaccessible from outside the class.
+Application state is managed within the `App` class to ensure maintainability and scalability.
 
-Centralized Application Controller
+### Context Handling
 
-A dedicated App class:
+The `this` keyword is properly managed using:
 
-Manages overall application state
+```js
+.bind(this)
+```
 
-Coordinates map interactions
+to maintain correct method context in event listeners.
 
-Handles form submissions
+### High-Order Array Methods
 
-Controls rendering logic
+Used for data transformation and logic:
 
-Manages data persistence
+- `map()`
+- `filter()`
+- `find()`
+- `every()`
+- `sort()`
 
-This separation of concerns ensures maintainability and scalability.
+### Event Delegation
 
-Context Management
+Efficient handling of dynamically rendered elements such as:
 
-The this keyword is carefully managed using .bind() to maintain proper method context in event listeners, avoiding common JavaScript pitfalls.
+- Workout selection
+- Deleting workouts
+- Map navigation
 
-Asynchronous Features & Web APIs
-Geolocation API
+---
 
-Retrieves user coordinates on application load
+## Browser APIs & Libraries
 
-Provides a personalized initial map position
+### Geolocation API
+Retrieves the user's current position to initialize the map.
 
-Leaflet.js Integration
+### Leaflet.js
+Handles:
 
-Renders interactive maps
+- Interactive map rendering
+- Custom markers
+- Popups
+- Smooth animations
 
-Adds custom markers
+### Local Storage API
+Stores and restores workout data across sessions.
 
-Displays dynamic popups
+---
 
-Implements smooth map animations
+## Technologies Used
 
-Local Storage API
+- HTML5
+- CSS3
+- JavaScript (ES6+)
+- Geolocation API
+- Local Storage API
+- Leaflet.js
 
-Persists workout data
+---
 
-Restores workouts on page reload
+## How to Run the Project
 
-Maintains application state across sessions
+1. Clone the repository:
 
-Functional Programming Patterns
+```bash
+git clone <your-repo-url>
+```
 
-The project makes extensive use of high-order array methods:
+2. Open `index.html` in your browser.
 
-map()
+No build tools or installations are required.
 
-filter()
+---
 
-find()
+## Project Purpose
 
-every()
-
-sort()
-
-These are used for:
-
-Data transformation
-
-Validation
-
-Rendering logic
-
-State management
-
-Event Delegation
-
-Efficient handling of dynamic UI elements through event delegation, including:
-
-Workout selection
-
-Deleting workouts
-
-Map panning interactions
-
-Input Validation
-
-Robust validation logic implemented using:
-
-Rest parameters
-
-Reusable utility functions
-
-Functional programming techniques
-
-Technologies Used
-
-HTML5
-
-CSS3
-
-Modern JavaScript (ES6+)
-
-Geolocation API
-
-Local Storage API
-
-Leaflet.js
-
-Conceptual Structure
-App
- ├── Workout (Base Class)
- │     ├── Running
- │     └── Cycling
- ├── Map Management
- ├── Form Handling
- ├── Data Persistence
- └── Event Handling
-
-What This Project Demonstrates
-
-Strong understanding of modern JavaScript
-
-Advanced OOP principles in practice
-
-Clean, modular architecture
-
-Real-world API integration
-
-State management without frameworks
-
-Maintainable and scalable frontend design
+This project demonstrates strong JavaScript fundamentals, structured application design, and real-world browser API integration without relying on external frameworks.
